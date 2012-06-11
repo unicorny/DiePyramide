@@ -43,7 +43,7 @@ public:
     inline float getTransparency() const {return mTransparency;}
     
     
-private:
+protected:
     float       mTransparency;
 };
 typedef DRResourcePtr<DRGameState> DRGameStatePtr;
