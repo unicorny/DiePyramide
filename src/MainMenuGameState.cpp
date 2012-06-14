@@ -1,15 +1,17 @@
 #include "MainMenuGameState.h"
 
 MainMenuGameState::MainMenuGameState()
-: DRGameState(0.5f)
+: DRGameState(0.5f), mMainGameState(new MainGameState)
 {
 	mMenuFont.init("data/introFont.tga", "data/introFont.tbf");
 	// place for multilanguage
 	mMenuEntrys.push_back(MainMenuEntry("Spiel beenden", EXIT_GAME));
-	mMenuEntrys.push_back(MainMenuEntry("Neues Spiel starten", CONTINUE_GAME));
+	mMenuEntrys.push_back(MainMenuEntry("Neues Spiel starten", NEW_GAME));
 	mMenuEntrys.push_back(MainMenuEntry("Hilfe", HELP_WITH_GAME));
 	updateMenuEntrys();
 	mMenuEntrys.front().choosen = true;
+
+	g_pGameStateManager->addConstantState(mMainGameState, "Game");
 }
 
 MainMenuGameState::~MainMenuGameState()
@@ -164,6 +166,11 @@ void MainMenuGameState::menuAction(MenuFunction menuFunction)
 	{
 	case EXIT_GAME:
 		EnPostExitMessageToSDL();
+		break;
+	case NEW_GAME:
+		g_pGameStateManager->popState();
+		if(g_pGameStateManager->getStateCount() == 0)
+			g_pGameStateManager->pushState("Game");
 		break;
 	default: LOG_WARNING("unknown function");
 	}

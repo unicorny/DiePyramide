@@ -22,7 +22,7 @@
 #ifndef __PY_MAIN_MENU_GAME_STATE__
 #define __PY_MAIN_MENU_GAME_STATE__
 
-#include "main.h"
+#include "MainGameState.h"
 
 enum MenuFunction
 {
@@ -76,10 +76,10 @@ private:
 	void menuAction(MenuFunction menuFunction);
 
 	std::list<MainMenuEntry>::iterator getChoosenEntry();
-			
 
 	DRFont mMenuFont;
 	std::list<MainMenuEntry> mMenuEntrys;
+	DRGameStatePtr	mMainGameState;
 };
 
 #endif //__PY_MAIN_MENU_GAME_STATE__
