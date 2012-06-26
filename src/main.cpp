@@ -5,7 +5,8 @@
 DRReturn load()
 {
 	if(EnInit_INI("data/config.ini"))
-		LOG_ERROR("Fehler bei init OpenGL", DR_ERROR);  
+		LOG_ERROR("Fehler bei init OpenGL", DR_ERROR);
+    SDL_ShowCursor(true);
 	return DR_OK;
 }
 
@@ -32,7 +33,7 @@ int main()
 		printf("error in gameLoop\n");
 		exit();
 		return -1;
-	}
+	}//*/
 	exit();
     return 42;
 }

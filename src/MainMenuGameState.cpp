@@ -21,9 +21,15 @@ MainMenuGameState::~MainMenuGameState()
 
 DRReturn MainMenuGameState::render(float fTime)
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    if(mFirstState)
+    {
+        glClearColor(0.404f, 0.525f, 0.643f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    printf("MainMenuGameState::render firstState: %d\n", mFirstState);
 	//glClearColor(0.2f, 0.1f, 0.15f, 1.0f);
-	glClearColor(0.404f, 0.525f, 0.643f, 1.0f);
+
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -76,10 +82,10 @@ DRReturn MainMenuGameState::render(float fTime)
 		text.setPosition(edge1+(edge2-edge1)/2.0f);
 		text.setScaling(DRVector2(1.2f, 1.2f));
 		text.drawText();
-	}	
+	}
 	mMenuFont.end();
 
-	
+
 
 	return DR_OK;
 }
