@@ -26,10 +26,7 @@ DRReturn MainMenuGameState::render(float fTime)
         glClearColor(0.404f, 0.525f, 0.643f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
-
-    printf("MainMenuGameState::render firstState: %d\n", mFirstState);
 	//glClearColor(0.2f, 0.1f, 0.15f, 1.0f);
-
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

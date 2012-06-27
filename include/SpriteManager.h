@@ -19,29 +19,35 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef __PY_MAIN_GAME_STATE__
-#define __PY_MAIN_GAME_STATE__
+#ifndef __PY_SPRITE_MANAGER__
+#define __PY_SPRITE_MANAGER__
 
-#include "Entity.h"
+#include "Sprite.h"
 
-class MainGameState : public DRGameState
+class SpriteManager
 {
 public:
-	MainGameState();
-	virtual ~MainGameState();
+	~SpriteManager();
+	static SpriteManager& Instance();
+	inline static SpriteManager& getSingleton() {return Instance();};
+	inline static SpriteManager* getSingletonPtr() {return &Instance();};
+	static bool	isInitialized()	{return Instance().mInitalized;};
 
-	virtual DRReturn move(float fTime);
-	virtual DRReturn render(float fTime);
+	void exit();
+	DRReturn init();
 
-	virtual const char* getResourceType() const {return "MainGameState";}
-	virtual bool less_than(DRIResource& tex) const
-	{
-		return false;//mTexturID <  dynamic_cast<DRTexture&>(tex).mTexturID;
-	}
+	SpritePtr getSprite(const char* filename);
+
+	DRReturn renderSprite() {if(!mInitalized) LOG_ERROR("not initalized!", DR_ERROR); return mSpriteGeometrie->render();}
+
 private:
-	DRFont mGameFont;
-	DRTexturePtr mBackgroundImage;
-	std::list<Entity> mEntitys;
+	SpriteManager();
+
+	bool mInitalized;
+
+	DRSpriteGeometriePtr mSpriteGeometrie;
+	std::map<DHASH, SpritePtr> mSprites;
+	typedef std::pair<DHASH, SpritePtr> SPRITE_PAIR;
 };
 
-#endif //__PY_INTRO_GAME_STATE_
+#endif //__PY_SPRITE_MANAGER__

@@ -1,9 +1,11 @@
 #include "MainGameState.h"
+#include "SpriteManager.h"
 
 MainGameState::MainGameState()
 : DRGameState(0.5f)
 {
 	mGameFont.init("data/introFont.tga", "data/introFont.tbf");
+	mBackgroundImage = DRTextureManager::Instance().getTexture("data/img/Pyramide.jpg", true);
 }
 
 MainGameState::~MainGameState()
@@ -19,7 +21,16 @@ DRReturn MainGameState::render(float fTime)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //glClearColor(0.2f, 0.1f, 0.15f, 1.0f);
     }
-	printf("MainGameState::render firstState: %d\n", mFirstState);
+
+	// background
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	mBackgroundImage->bind();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	SpriteManager::Instance().renderSprite();
+
+
+
 	return DR_OK;
 }
 

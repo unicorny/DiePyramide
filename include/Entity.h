@@ -19,29 +19,18 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef __PY_MAIN_GAME_STATE__
-#define __PY_MAIN_GAME_STATE__
+#ifndef __PY_ENTITY__
+#define __PY_ENTITY__
 
-#include "Entity.h"
+#include "Sprite.h"
 
-class MainGameState : public DRGameState
+class Entity
 {
 public:
-	MainGameState();
-	virtual ~MainGameState();
-
-	virtual DRReturn move(float fTime);
-	virtual DRReturn render(float fTime);
-
-	virtual const char* getResourceType() const {return "MainGameState";}
-	virtual bool less_than(DRIResource& tex) const
-	{
-		return false;//mTexturID <  dynamic_cast<DRTexture&>(tex).mTexturID;
-	}
+	Entity(SpritePtr sprite);
+	~Entity();
 private:
-	DRFont mGameFont;
-	DRTexturePtr mBackgroundImage;
-	std::list<Entity> mEntitys;
+	SpritePtr mSprite;
 };
 
-#endif //__PY_INTRO_GAME_STATE_
+#endif

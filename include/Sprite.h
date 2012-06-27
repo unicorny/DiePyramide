@@ -19,29 +19,38 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef __PY_MAIN_GAME_STATE__
-#define __PY_MAIN_GAME_STATE__
+#ifndef __PY_SPRITE__
+#define __PY_SPRITE__
 
-#include "Entity.h"
+#include "main.h"
 
-class MainGameState : public DRGameState
+class SpriteGeometrie : public DRGeometrie
 {
 public:
-	MainGameState();
-	virtual ~MainGameState();
-
-	virtual DRReturn move(float fTime);
-	virtual DRReturn render(float fTime);
-
-	virtual const char* getResourceType() const {return "MainGameState";}
-	virtual bool less_than(DRIResource& tex) const
-	{
-		return false;//mTexturID <  dynamic_cast<DRTexture&>(tex).mTexturID;
-	}
+	SpriteGeometrie();
+	virtual ~SpriteGeometrie();
+	virtual const char* getResourceType() const {return "SpriteGeometrie";}
 private:
-	DRFont mGameFont;
-	DRTexturePtr mBackgroundImage;
-	std::list<Entity> mEntitys;
 };
 
-#endif //__PY_INTRO_GAME_STATE_
+typedef DRResourcePtr<DRGeometrie> DRSpriteGeometriePtr;
+
+class Sprite : public DRIResource
+{
+public:
+	Sprite(const char* spriteFileName);
+	~Sprite();
+
+	DRReturn render();
+	virtual const char* getResourceType() const {return "Sprite";}
+	virtual bool less_than(DRIResource& sprite) const
+	{
+		return false;
+	}
+private:
+	DRTexturePtr mSpriteTexture;
+};
+typedef DRResourcePtr<Sprite> SpritePtr;
+
+
+#endif //__PY_SPRITE__

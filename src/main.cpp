@@ -1,5 +1,6 @@
 #include "main.h"
 #include "IntroGameState.h"
+#include "SpriteManager.h"
 
 
 DRReturn load()
@@ -7,11 +8,13 @@ DRReturn load()
 	if(EnInit_INI("data/config.ini"))
 		LOG_ERROR("Fehler bei init OpenGL", DR_ERROR);
     SDL_ShowCursor(true);
+	SpriteManager::Instance().init();
 	return DR_OK;
 }
 
 void exit()
 {
+	SpriteManager::Instance().exit();
 	EnExit();
 }
 
