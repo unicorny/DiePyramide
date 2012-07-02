@@ -2,11 +2,11 @@ PROJECT(DiePyramide CXX)
 
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
-SET(pyramideSrc main IntroGameState MainGameState MainMenuGameState Sprite SpriteManager Entity)
+SET(pyramideSrc main IntroGameState MainGameState MainMenuGameState Sprite SpriteManager Entity tinyxml2)
 #IF(WIN32)
 SET(pyramideSrc ${pyramideSrc} ../include/main.h ../include/IntroGameState.h ../include/MainGameState.h
                            ../include/MainMenuGameState.h ../include/Sprite.h ../include/SpriteManager.h
-						   ../include/Entity.h)
+						   ../include/Entity.h ../include/tinyxml2.h)
 #ENDIF(WIN32)
 
 SET(PA ../import/bin ../import/lib)

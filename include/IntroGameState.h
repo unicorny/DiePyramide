@@ -39,7 +39,6 @@ public:
 		return false;//mTexturID <  dynamic_cast<DRTexture&>(tex).mTexturID;
 	}
 private:
-	DRFont mIntroFont;
 	float  mElapsedTime;
 	DRTexturePtr mLogo;
 

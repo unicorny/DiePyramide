@@ -9,6 +9,9 @@ DRReturn load()
 		LOG_ERROR("Fehler bei init OpenGL", DR_ERROR);
     SDL_ShowCursor(true);
 	SpriteManager::Instance().init();
+	DRFileManager::Instance().addOrdner("data");
+	DRFileManager::Instance().addOrdner("data/img");
+	DRFileManager::Instance().addOrdner("data/img/wesen");
 	return DR_OK;
 }
 

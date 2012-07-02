@@ -3,8 +3,7 @@
 IntroGameState::IntroGameState()
 : DRGameState(1.0f), mElapsedTime(0.0f), mMainMenuGameState(new MainMenuGameState)
 {
-	mIntroFont.init("data/introFont.tga", "data/introFont.tbf");
-	mLogo = DRTextureManager::Instance().getTexture("data/img/logo.jpg", true);
+	mLogo = DRTextureManager::Instance().getTexture("logo.jpg", true);
 	g_pGameStateManager->addConstantState(mMainMenuGameState, "MainMenu");
 }
 
@@ -81,13 +80,5 @@ DRReturn IntroGameState::render(float fTime)
 //*/
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-/*	mIntroFont.begin();
-	DRText text(&mIntroFont);
-	text.setText("Elapsed Time: %f", mElapsedTime);
-	text.setFlags(DR_FF_RELATIVE | DR_FF_RELATIVSCALING);
-	text.setScaling(DRVector2(1.4f, 1.4f));
-	text.drawText();
-	mIntroFont.end();
-//	*/
 	return DR_OK;
 }

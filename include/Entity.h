@@ -29,7 +29,12 @@ class Entity
 public:
 	Entity(SpritePtr sprite);
 	~Entity();
+
+	DRReturn move(float fTime);
+	DRReturn render();
 private:
+	DRVector2 mPosition;
+	DRVector2 mScaling;
 	SpritePtr mSprite;
 };
 

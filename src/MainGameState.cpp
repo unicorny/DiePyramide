@@ -5,7 +5,9 @@ MainGameState::MainGameState()
 : DRGameState(0.5f)
 {
 	mGameFont.init("data/introFont.tga", "data/introFont.tbf");
-	mBackgroundImage = DRTextureManager::Instance().getTexture("data/img/Pyramide.jpg", true);
+	mBackgroundImage = DRTextureManager::Instance().getTexture("Pyramide.jpg", true);
+
+	//read entity via xml 
 }
 
 MainGameState::~MainGameState()
