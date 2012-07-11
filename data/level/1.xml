@@ -1,0 +1,18 @@
+<level>
+	<background>Pyramide.jpg</background>
+	<KIs>
+		<KI name="simple" class="SimpleKI">
+			<XDir>0.10,0.11</XDir>
+			<YDir>0.2,0.25</YDir>
+			<speed>0.01</speed>
+		</KI>
+	</KIs>
+	<entitys>
+		<entity KI="simple">
+			<startPos>0.1,0.2</startPos>
+			<delta>0</delta>
+			<scale>0.2, 0.2</scale>
+			<texture>armi.tga</texture>
+		</entity>
+	</entitys>
+</level>
