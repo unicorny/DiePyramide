@@ -22,20 +22,32 @@
 #ifndef __PY_ENTITY__
 #define __PY_ENTITY__
 
+
 #include "Sprite.h"
+#include "KI.h"
 
 class Entity
 {
 public:
-	Entity(SpritePtr sprite);
-	~Entity();
+    Entity(tinyxml2::XMLElement* entity, KI* ki, const char* xmlFileName = "");
+    ~Entity();
 
-	DRReturn move(float fTime);
-	DRReturn render();
+    DRReturn move(float fTime);
+    DRReturn render();
+
+    bool isActive(float elapsedDelta = 0.0f) {return elapsedDelta >= mDelta;}
+
+    bool operator < (Entity& entity) const
+	{
+		return mDelta < entity.mDelta;
+	}
+
 private:
-	DRVector2 mPosition;
-	DRVector2 mScaling;
-	SpritePtr mSprite;
+    DRVector2   mPosition;
+    DRVector2   mScaling;
+    SpritePtr   mSprite;
+    float       mDelta;
+    KI*         mKI;
 };
 
 #endif

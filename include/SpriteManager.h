@@ -36,6 +36,7 @@ public:
 	void exit();
 	DRReturn init();
 
+    // threadsafe
 	SpritePtr getSprite(const char* filename);
 
 	DRReturn renderSprite() {if(!mInitalized) LOG_ERROR("not initalized!", DR_ERROR); return mSpriteGeometrie->render();}
@@ -45,9 +46,11 @@ private:
 
 	bool mInitalized;
 
-	DRSpriteGeometriePtr mSpriteGeometrie;
-	std::map<DHASH, SpritePtr> mSprites;
+	DRSpriteGeometriePtr                mSpriteGeometrie;
+	std::map<DHASH, SpritePtr>          mSprites;
 	typedef std::pair<DHASH, SpritePtr> SPRITE_PAIR;
+
+    SDL_mutex*                          mGetSpriteMutex;
 };
 
 #endif //__PY_SPRITE_MANAGER__

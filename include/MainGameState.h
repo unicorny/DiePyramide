@@ -22,26 +22,31 @@
 #ifndef __PY_MAIN_GAME_STATE__
 #define __PY_MAIN_GAME_STATE__
 
-#include "Entity.h"
+#include "Level.h"
 
 class MainGameState : public DRGameState
 {
 public:
-	MainGameState();
-	virtual ~MainGameState();
+    MainGameState();
+    virtual ~MainGameState();
 
-	virtual DRReturn move(float fTime);
-	virtual DRReturn render(float fTime);
+    virtual DRReturn move(float fTime);
+    virtual DRReturn render(float fTime);
 
-	virtual const char* getResourceType() const {return "MainGameState";}
-	virtual bool less_than(DRIResource& tex) const
-	{
-		return false;//mTexturID <  dynamic_cast<DRTexture&>(tex).mTexturID;
-	}
+    virtual const char* getResourceType() const {return "MainGameState";}
+    virtual bool less_than(DRIResource& tex) const
+    {
+        return false;//mTexturID <  dynamic_cast<DRTexture&>(tex).mTexturID;
+    }
+    
+    static int LevelLoadThread(void* data);
 private:
-	DRFont mGameFont;
-	DRTexturePtr mBackgroundImage;
-	std::list<Entity> mEntitys;
+    DRFont      mGameFont;
+    
+    Level*      mCurrentLevel;
+    Level*      mLevelToLoad;
+    SDL_Thread* mLoadThread;
+    SDL_mutex*  mLevelLoadMutex;
 };
 
 #endif //__PY_INTRO_GAME_STATE_

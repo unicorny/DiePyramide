@@ -14,7 +14,7 @@ IntroGameState::~IntroGameState()
 DRReturn IntroGameState::move(float fTime)
 {
 	mElapsedTime += fTime;
-	//if(mElapsedTime >= 6.0f)
+	if(mElapsedTime >= 1.0f)
 	{
 		g_pGameStateManager->popState();
 		g_pGameStateManager->pushState("MainMenu");
@@ -46,11 +46,21 @@ DRReturn IntroGameState::render(float fTime)
 	//glTranslatef(0.0f, 0.0f, -1.0f);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 
-	glEnable(GL_TEXTURE_2D);
+	
 	glMatrixMode(GL_MODELVIEW);
-	mLogo->bind();
 	glLoadIdentity();
-	glColor3f(1.0f, 1.0f, 1.0f);
+    if(mLogo->isLoadingFinished())
+    {
+        glEnable(GL_TEXTURE_2D);
+        glColor3f(1.0f, 1.0f, 1.0f);
+	    mLogo->bind();
+    }
+    else
+    {
+        glColor3f(0.0f, 0.0f, 0.0f);
+        glDisable(GL_TEXTURE_2D);
+    }
+	
 	float step = mElapsedTime/4.0f;
 	if(step > 0.5f) step = 0.5f;
 	glTranslatef(step-0.5f, 0.0f, 0.0f);
