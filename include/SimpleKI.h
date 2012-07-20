@@ -1,6 +1,6 @@
 /*/*************************************************************************
  *                                                                         *
- * Core, Core-Lib for my programs, Core doesn't need any libraries	   *
+ * DiePyramide, it is a simple game										   *
  * Copyright (C) 2012, 2013, 2014 Dario Rekowski                           *
  * Email: dario.rekowski@gmx.de   Web: www.einhornimmond.de                *
  *                                                                         *
@@ -8,48 +8,35 @@
  * it under the terms of the GNU General Public License as published by    *
  * the Free Software Foundation, either version 3 of the License, or       *
  * any later version.                                                      *
- *									   *
- * This program is distributed in the hope that it will be useful,	   *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of	   *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the	   *
- * GNU General Public License for more details.				   *
- *									   *
+ *																		   * 
+ * This program is distributed in the hope that it will be useful,	       *
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of	       *
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the	       *
+ * GNU General Public License for more details.				               *
+ *									                                       *
  * You should have received a copy of the GNU General Public License	   *
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.   *
  *                                                                         *
  ***************************************************************************/
-/* 
- * File:   DRIndexReferenzHolder.h
- * Author: Dario
- *
- * Created on 8. November 2011, 11:56
- */
 
-#ifndef __DR_CORE2_INDEX_REFERENZ_HOLDER__
-#define	__DR_CORE2_INDEX_REFERENZ_HOLDER__
+#ifndef __PY_SIMPLE_KI__
+#define __PY_SIMPLE_KI__
 
+#include "KI.h"
 
-class CORE2_API DRIndexReferenzHolder
+class SimpleKI : public KI
 {
 public:
-    DRIndexReferenzHolder(uint maxIndexCount);
-    ~DRIndexReferenzHolder();
-    
-    void add(uint index);
-    
-    void remove(uint index);
-    
-    uint getFree();
-    
+	SimpleKI(tinyxml2::XMLElement* ki, const char* xmlFileName);
+	virtual ~SimpleKI();
+
+	virtual DRVector2 getDir(float time, DRVector2 dir);
+
 private:
-    
-    uint*       mReferenzCounter;
-    uint*       mFreePlaces;  
-    uint        mFreePlaceCursor;
-    uint        mMaxIndexCount;
-    
+	DRVector2 mXDir;
+	DRVector2 mYDir;
+	float mSpeed;
+
 };
 
-
-#endif	/* __DR_CORE2_INDEX_REFERENZ_HOLDER__ */
-
+#endif //__PY_SIMPLE_KI__
