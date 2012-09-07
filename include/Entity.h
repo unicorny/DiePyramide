@@ -44,6 +44,7 @@ public:
 
 private:
     DRVector2   mPosition;
+	DRVector2   mLastDirection;
     DRVector2   mScaling;
     SpritePtr   mSprite;
     float       mDelta;

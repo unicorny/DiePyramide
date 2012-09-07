@@ -30,12 +30,13 @@ public:
 	SimpleKI(tinyxml2::XMLElement* ki, const char* xmlFileName);
 	virtual ~SimpleKI();
 
-	virtual DRVector2 getDir(float time, DRVector2 dir);
+	virtual DRVector2 getDir(DRVector2 dir);
 
 private:
 	DRVector2 mXDir;
 	DRVector2 mYDir;
 	float mSpeed;
+	float mChangeDir;
 
 };
 

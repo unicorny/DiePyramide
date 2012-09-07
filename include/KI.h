@@ -31,7 +31,8 @@ public:
 	KI();
 	virtual ~KI();
 
-	virtual DRVector2 getDir(float time, DRVector2 dir) = 0;
+	//!\return stepsize per second
+	virtual DRVector2 getDir(DRVector2 dir) = 0;
 
 // static 
 	static KI* createKI(tinyxml2::XMLElement* ki, const char* xmlFileName);

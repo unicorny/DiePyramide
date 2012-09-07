@@ -2,17 +2,48 @@
 	<background>Pyramide.jpg</background>
 	<KIs>
 		<KI name="simple" class="SimpleKI">
-			<XDir>0.10,0.11</XDir>
-			<YDir>0.2,0.25</YDir>
-			<speed>0.01</speed>
+			<XDir>0.08,0.11</XDir>
+			<YDir>0.3,0.1</YDir>
+			<changeDir>0.2</changeDir>
+			<speed>0.1</speed>
+		</KI>
+		<KI name="simple2" class="SimpleKI">
+			<XDir>0.2,0.18</XDir>
+			<YDir>0.1,0.21</YDir>
+			<changeDir>0.4</changeDir>
+			<speed>0.15</speed>
 		</KI>
 	</KIs>
 	<entitys>
 		<entity KI="simple">
-			<startPos>0.1,0.2</startPos>
+			<startPos>0.8,0.2</startPos>
 			<delta>0</delta>
 			<scale>0.2, 0.2</scale>
 			<texture>armi.tga</texture>
 		</entity>
+		<entity KI="simple">
+			<startPos>0.4,0.2</startPos>
+			<delta>0</delta>
+			<scale>0.2, 0.2</scale>
+			<texture>armi.tga</texture>
+		</entity>
+		<entity KI="simple">
+			<startPos>0.1,0.8</startPos>
+			<delta>0</delta>
+			<scale>0.2, 0.2</scale>
+			<texture>uhi.tga</texture>
+		</entity>
+		<entity KI="simple">
+			<startPos>0.5,0.8</startPos>
+			<delta>0</delta>
+			<scale>0.2, 0.2</scale>
+			<texture>uhi.tga</texture>
+		</entity>
+		<entity KI="simple2">
+			<startPos>0.2,0.7</startPos>
+			<delta>0</delta>
+			<scale>0.2, 0.2</scale>
+			<texture>schleimi.tga</texture>
+		</entity>		
 	</entitys>
 </level>
